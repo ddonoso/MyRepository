@@ -1,0 +1,30 @@
+package com.pcm.training;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import com.pcm.service.PayroleService;
+import com.pcm.training.Employee;
+import com.pcm.training.President;
+import com.pcm.training.PresidentException;
+
+public class PersonFactory<A extends Employee>{
+                
+                private static PersonFactory instance;
+                @SuppressWarnings({ "unchecked", "rawtypes" })
+                public static PersonFactory getInstance() {
+                                if (instance == null) {
+                                                instance = new PersonFactory<>();
+                                }
+                                return instance;
+                }
+
+                public A createInstance(String name, String last, int age, String salary, Class<A> theClass)
+                                                   throws IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+                                Constructor<A> constructor = theClass.getDeclaredConstructor(String.class,String.class,Integer.class,String.class);
+                                return constructor.newInstance(name,last,age,salary);
+                }
+
+}
+			
+

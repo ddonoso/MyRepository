@@ -1,0 +1,7 @@
+package com.pcm.training;
+
+public class SalaryInLimitException extends Exception{
+	public SalaryInLimitException(){
+		super("Salary in Limit");
+	}
+}

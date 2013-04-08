@@ -1,0 +1,125 @@
+package com.pcm.training.entity;
+
+import java.math.BigDecimal;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.pcm.training.util.Util;
+
+@Entity
+@Table(name = "PAYROLL")
+@SequenceGenerator(name = "payroll_seq", initialValue = 1, allocationSize = 1000)
+public class Payroll {
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payroll_seq")
+	private int id;
+
+	@Column(name = "SALARY")
+	private String salary;
+
+	@Column(name = "YEARSOFSERVICE")
+	private int yearsOfService;
+
+	@ManyToOne
+	@JoinColumn(name = "EMPLOYEE_ID")
+	private Employee employee;
+
+	private BigDecimal bonusPercentage;
+	private String bonus;
+	private String annualIncome;
+	private String pensionFund;
+
+	public Payroll(String salary, BigDecimal bonusPercentage) {
+		this.setSalary(salary);
+		this.setBonusPercentage(bonusPercentage);
+		this.computeBonus();
+		this.setAnnualIncome(this.computeAnnualIncome());
+
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+
+	public String getSalary() {
+		return this.salary;
+	}
+
+	public int getYearsOfService() {
+		return this.yearsOfService;
+	}
+
+	public void setYearsOfService(int yearsOfService) {
+		this.yearsOfService = yearsOfService;
+	}
+
+	public BigDecimal getBonusPercentage() {
+		return this.bonusPercentage;
+	}
+
+	public String getBonus() {
+		return this.bonus;
+	}
+
+	public void setAnnualIncome(String annualIncome) {
+		this.annualIncome = annualIncome;
+	}
+
+	public String getAnnualIncome() {
+		return annualIncome;
+	}
+
+	public String getPensionFund() {
+		return this.pensionFund;
+	}
+
+	public void setPensionFund(String pensionFund) {
+		this.pensionFund = pensionFund;
+	}
+
+	public void changeSalary(String salary) {
+		this.salary = salary;
+		this.bonus = computeBonus();
+		this.annualIncome = computeAnnualIncome();
+	}
+
+	public void setBonusPercentage(BigDecimal bonusPercentage) {
+		this.bonusPercentage = bonusPercentage;
+		this.bonus = computeBonus();
+		this.annualIncome = computeAnnualIncome();
+	}
+
+	public String computeBonus() {
+		BigDecimal salary = new BigDecimal(getSalary());
+		BigDecimal bonus = salary.multiply(getBonusPercentage());
+		bonus = Util.roundOff(bonus);
+		return bonus.toString();
+	}
+
+	public String computeAnnualIncome() {
+		BigDecimal salary = new BigDecimal(this.salary);
+		BigDecimal bonus = new BigDecimal(this.bonus);
+		BigDecimal annualIncome = salary.multiply(new BigDecimal(12));
+		annualIncome = annualIncome.add(bonus);
+		annualIncome = Util.roundOff(annualIncome);
+		return annualIncome.toString();
+	}
+
+	public int getId() {
+		return this.id;
+	}
+	
+	
+}

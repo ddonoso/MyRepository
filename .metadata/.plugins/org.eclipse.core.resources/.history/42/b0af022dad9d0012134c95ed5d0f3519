@@ -1,0 +1,45 @@
+package com.pcm.training;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/beans.xml"})
+public class ComputeSalaryTest {
+
+	@Autowired
+	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	private PayroleService payrollService;
+	
+	@Test
+	public void findByNameTest() {
+		Employee emp1 = new Employee("Ezekiel","Calayag",22, "5500");
+		employeeDAO.persist(emp1);
+		emp1.setYearsOfService(5);
+		Employee emp2 = new Employee("Ezekiel","Ca",22, "5500");
+		employeeDAO.persist(emp2);
+		emp2.setYearsOfService(4);
+		Employee emp3 = new Employee("Kiel","Calayag",22, "5500");
+		employeeDAO.persist(emp3);
+		emp3.setYearsOfService(5);
+		Employee emp4 = new Employee("Kellogs","Calayag",22, "5500");
+		employeeDAO.persist(emp4);
+		emp4.setYearsOfService(6);
+		
+		
+		Employee resultEmployee = payrollService.findByName("Ez", "Ca");
+		assertNotNull("result Employee must not be null", resultEmployee);
+		System.out.println(payrollService.getPension(resultEmployee));
+		
+	
+	}
+
+}

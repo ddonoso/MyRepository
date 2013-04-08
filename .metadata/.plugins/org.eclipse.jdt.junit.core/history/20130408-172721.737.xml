@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BonusTest" project="Project" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="com.pcm.test.BonusTest" time="0.01">
+    <testcase name="basicPersonCreationTests" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="leavingBonusTest" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="subordinates" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="AgeTest" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="pensionFund" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="ServiceTest" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="PayRollTest" classname="com.pcm.test.BonusTest" time="0.0"/>
+    <testcase name="collectionCompareTest" classname="com.pcm.test.BonusTest" time="0.01"/>
+  </testsuite>
+</testrun>

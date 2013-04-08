@@ -1,0 +1,20 @@
+package com.pcm.training;
+
+import java.util.ArrayList;
+
+public class UserTest {
+	
+	public static void main(String[] args) {
+		
+		ArrayList<String> list = new ArrayList<>();
+		list.add("dog");
+		list.add("cat");
+		list.add("frog");
+		
+		list.contains("cat");
+		/*b. list.hasObject("cat")
+		c. list.indexOf("cat")
+		d. list.indexOf(1)*/
+	}
+	
+}

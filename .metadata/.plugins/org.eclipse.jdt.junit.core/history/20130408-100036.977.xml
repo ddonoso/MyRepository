@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StudentTest" project="ProjectTest" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="com.pcm.test.StudentTest" time="12.798">
+    <testcase name="employeeScore" classname="com.pcm.test.StudentTest" time="12.798">
+      <error>java.lang.IllegalStateException: Failed to load ApplicationContext&#13;
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:308)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)&#13;
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [beans.xml]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: pu] Unable to build EntityManagerFactory&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1420)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:519)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)&#13;
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)&#13;
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)&#13;
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)&#13;
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:192)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:567)&#13;
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:895)&#13;
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:425)&#13;
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:84)&#13;
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:1)&#13;
+	at org.springframework.test.context.TestContext.loadApplicationContext(TestContext.java:280)&#13;
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:304)&#13;
+	... 24 more&#13;
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: pu] Unable to build EntityManagerFactory&#13;
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:915)&#13;
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:890)&#13;
+	at org.hibernate.ejb.HibernatePersistence.createContainerEntityManagerFactory(HibernatePersistence.java:74)&#13;
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:225)&#13;
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:310)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1477)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1417)&#13;
+	... 37 more&#13;
+Caused by: org.hibernate.AnnotationException: Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: com.pcm.entity.Student.tuition&#13;
+	at org.hibernate.cfg.annotations.CollectionBinder.getCollectionBinder(CollectionBinder.java:329)&#13;
+	at org.hibernate.cfg.AnnotationBinder.processElementAnnotations(AnnotationBinder.java:1696)&#13;
+	at org.hibernate.cfg.AnnotationBinder.processIdPropertiesIfNotAlready(AnnotationBinder.java:768)&#13;
+	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:687)&#13;
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processAnnotatedClassesQueue(Configuration.java:3432)&#13;
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3386)&#13;
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1338)&#13;
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1728)&#13;
+	at org.hibernate.ejb.EntityManagerFactoryImpl.&lt;init&gt;(EntityManagerFactoryImpl.java:93)&#13;
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:905)&#13;
+	... 43 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

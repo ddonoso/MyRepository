@@ -1,0 +1,12 @@
+import com.pcm.training.PayroleService;
+
+
+public class PersonFactory {
+
+	public static PersonFacoty getInstance() {
+		if(instance==null){
+			instance = new PayroleService();
+		}
+		return instance;
+	}
+}

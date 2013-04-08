@@ -1,0 +1,56 @@
+package com.pcm.training;
+
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+public class PayRollDAO {
+	
+	private EntityManager pr;
+
+    static {
+        try {
+            DriverManager.registerDriver((Driver) Class.forName("org.hsqldb.jdbcDriver").newInstance());
+        } catch (Exception e) {
+            System.out.println("Crazy exception: " + e.getMessage());
+            System.exit(-1);
+        }
+    }
+
+    public PayRollDAO() {
+		// TODO Auto-generated constructor stub
+    	pr = Persistence.createEntityManagerFactory("pu").createEntityManager();
+	}
+	
+	public void persist(PayRoll p) {
+		pr.getTransaction().begin();
+		pr.persist(p);
+		pr.flush();
+		pr.getTransaction().commit();
+		
+	}
+
+	public List<PayRoll> findByScoreRange(int start, int end) {
+		// TODO Auto-generated method stub
+		return pr.createQuery("SELECT e FROM payroll e WHERE salary >= ",Employee.class)
+                .setParameter("start",start)
+                .setParameter("stop",end)
+                .getResultList();
+	}
+	
+	public List<Employee> searchByDepartment(String substring) {
+        //substring = "%"+substring+"%";
+        
+        return pr.createQuery("SELECT e FROM Employee e WHERE department LIKE :a",Employee.class)
+                     .setParameter("a", "%"+substring+"%").
+                     getResultList();
+        
+ }
+
+	
+	
+
+}

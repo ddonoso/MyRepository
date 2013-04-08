@@ -1,0 +1,29 @@
+package com.pcm.training;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+public class PersonTest {
+	
+	public final String FIRST_NAME = "Ezekiel";
+	public final String LAST_NAME = "Calayag";
+	public final int AGE = 22;
+	public final String SALARY = "500000";
+
+	@Test
+	public void basicPersonCreationTests() {
+		Person p = new Person(FIRST_NAME, LAST_NAME, AGE, SALARY);
+		Assert.assertEquals(p.getFirstName(),"Ezekiel");
+		Assert.assertEquals(p.getLastName(), "Calayag");
+		Assert.assertEquals(p.getAge(), 22);
+		Assert.assertEquals(p.getSalary(), "500000");
+		
+		System.out.println(p);
+		
+		int[] array = {1,2,3};
+		
+		array[3] = 5;
+	}
+
+}

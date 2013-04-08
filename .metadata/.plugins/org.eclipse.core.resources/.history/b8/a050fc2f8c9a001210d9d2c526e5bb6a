@@ -1,0 +1,16 @@
+package com.pcm.training;
+
+import java.util.ArrayList;
+
+public class UserTest{
+private int i = 35;
+	public static void main(String argv[]){
+		int i = 45;
+		UserTest s = new UserTest ();
+		s.someMethod();
+	}
+	public static void someMethod(){
+		System.out.println(i);
+}
+}
+

@@ -1,0 +1,15 @@
+package com.pcm.entity;
+
+import javax.persistence.SequenceGenerator;
+
+
+@Entity
+@Table (name = "OverTime")
+@SequenceGenerator(name = "student_seq", initialValue = 1, allocationSize = 1000)
+public class OverTime {
+
+	@Entity
+	@Table (name = "OverTime")
+	@SequenceGenerator(name = "student_seq", initialValue = 1, allocationSize = 1000)
+
+}

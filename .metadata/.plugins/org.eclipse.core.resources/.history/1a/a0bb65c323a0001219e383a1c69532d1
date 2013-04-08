@@ -1,0 +1,75 @@
+package com.pcm.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+@Entity
+@Table (name = "OverTime")
+@SequenceGenerator(name = "overtime_seq", initialValue = 1, allocationSize = 1000)
+public class OverTime {
+	
+	
+	
+	
+	
+	public OverTime(double numberOfHours, String overTimeName) {
+		super();
+		this.numberOfHours = numberOfHours;
+		this.overTimeName = overTimeName;
+		
+	}
+
+	@Id
+	@Column(name = "Overtime_Id")
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "overtime_seq")	
+	private int id;
+	
+	@Column(name = "NumberofHours")
+	private double numberOfHours;
+	
+	@Column(name = "TypeofOverTime")
+	private String overTimeName;
+	
+/*	@ManyToMany
+	@JoinColumn(name = "Employee_Id")
+	private List<Employee> employee= new ArrayList <Employee>();*/
+
+	public double getNumberOfHours() {
+		return numberOfHours;
+	}
+
+	public void setNumberOfHours(double numberOfHours) {
+		this.numberOfHours = numberOfHours;
+	}
+
+	public String getOverTimeName() {
+		return overTimeName;
+	}
+
+	public void setOverTimeName(String overTimeName) {
+		this.overTimeName = overTimeName;
+	}
+
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
+	
+	
+
+
+}

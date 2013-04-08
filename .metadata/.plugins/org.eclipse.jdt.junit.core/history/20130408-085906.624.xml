@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TrainingTest" project="Training06" tests="12" started="12" failures="0" errors="0" ignored="0">
+  <testsuite name="com.pcm.training.test.TrainingTest" time="7.153">
+    <testcase name="basicEmployeeCreationTest" classname="com.pcm.training.test.TrainingTest" time="7.122"/>
+    <testcase name="basicPresidentCreationTest" classname="com.pcm.training.test.TrainingTest" time="0.015"/>
+    <testcase name="collectionCompareTest" classname="com.pcm.training.test.TrainingTest" time="0.016"/>
+    <testcase name="presidentExceptionTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="subordinateOverflowTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="pensionFund" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="factoryTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="salaryOverflowTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="payrollServiceTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="payrollEntityTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="goldenParachute" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+    <testcase name="addSubordinateTest" classname="com.pcm.training.test.TrainingTest" time="0.0"/>
+  </testsuite>
+</testrun>

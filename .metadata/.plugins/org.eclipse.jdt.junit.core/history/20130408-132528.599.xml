@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JPAPayRollTest" project="Project" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.pcm.test.JPAPayRollTest" time="1.681">
+    <testcase name="payRollTest" classname="com.pcm.test.JPAPayRollTest" time="1.68"/>
+    <testcase name="goldenParachute" classname="com.pcm.test.JPAPayRollTest" time="0.001"/>
+  </testsuite>
+</testrun>

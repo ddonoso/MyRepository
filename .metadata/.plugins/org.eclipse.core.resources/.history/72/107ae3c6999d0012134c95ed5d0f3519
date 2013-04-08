@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="pu"/>
+    </bean>
+
+    <bean id="employeeDao" class="com.pcm.training.EmployeeDAO" init-method="init">
+        <property name="factory" ref="entityManagerFactory" />
+    </bean>
+    
+    
+    <bean id="payrollService" class="com.pcm.training.service.PayrollService" 
+    	scope="singleton" />
+    
+    
+</beans>
+

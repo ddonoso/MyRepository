@@ -1,0 +1,33 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+
+public class EmployeeEntity extends Person{
+	
+	private String salary;
+	
+	public EmployeeEntity(String firstName, String lastName, int age, String salary) {
+		super(firstName, lastName, age);
+		// TODO Auto-generated constructor stub
+
+		this.salary = salary;
+		
+	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	
+	
+	
+}
+
+
+
+
+
+

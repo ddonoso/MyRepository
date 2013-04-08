@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JPATest" project="Project" tests="4" started="4" failures="0" errors="4" ignored="0">
+  <testsuite name="com.pcm.test.JPATest" time="1.674">
+    <testcase name="employeeDepartment" classname="com.pcm.test.JPATest" time="1.658">
+      <error>org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.pcm.test.JPATest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:288)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)&#13;
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)&#13;
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)&#13;
+	... 26 more&#13;
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)&#13;
+	... 28 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="employeePersistence" classname="com.pcm.test.JPATest" time="0.0">
+      <error>org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.pcm.test.JPATest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:288)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)&#13;
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)&#13;
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)&#13;
+	... 26 more&#13;
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)&#13;
+	... 28 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="employeeScore" classname="com.pcm.test.JPATest" time="0.016">
+      <error>org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.pcm.test.JPATest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:288)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)&#13;
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)&#13;
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)&#13;
+	... 26 more&#13;
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)&#13;
+	... 28 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="test" classname="com.pcm.test.JPATest" time="0.0">
+      <error>org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.pcm.test.JPATest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:288)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)&#13;
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)&#13;
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)&#13;
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.pcm.factory.PersonFactory com.pcm.test.JPATest.pf; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)&#13;
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)&#13;
+	... 26 more&#13;
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [com.pcm.factory.PersonFactory] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793)&#13;
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)&#13;
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)&#13;
+	... 28 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

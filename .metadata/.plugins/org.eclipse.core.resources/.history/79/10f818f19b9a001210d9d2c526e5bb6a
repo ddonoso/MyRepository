@@ -1,0 +1,40 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+
+public class Person {
+	
+	public String firstName;
+	public String lastName;
+	public int age;
+	public BigDecimal salary;
+
+	public Person(String firstName, String lastName, int age, String ) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.salary = new BigDecimal(salary);
+	}
+
+	public String getFirstName() {
+		
+		return this.firstName;
+	}
+
+	public String getLastName() {
+		// TODO Auto-generated method stub
+		return this.lastName;
+	}
+
+	public BigDecimal getSalary() {
+		// TODO Auto-generated method stub
+		return this.salary;
+	}
+
+	public int getAge() {
+		// TODO Auto-generated method stub
+		return this.age ;
+	}
+
+}
+

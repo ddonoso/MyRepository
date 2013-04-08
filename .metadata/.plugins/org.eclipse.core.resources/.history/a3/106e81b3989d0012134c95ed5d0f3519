@@ -1,0 +1,131 @@
+package com.pcm.training.test;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.pcm.training.dao.EmployeeDAO;
+import com.pcm.training.dao.PayrollDAO;
+import com.pcm.training.entity.Employee;
+import com.pcm.training.entity.Payroll;
+import com.pcm.training.exception.PresidentException;
+
+public class JPATest {
+	@Test
+	public void relationshipMapping(){
+		 Employee boss = new Employee("Kelvin", "Te", 21, "100000.00");
+		 Employee e1 = new Employee("Cathy","Belen",21,"10000");
+		 Employee e2 = new Employee("Kiel","Calayag",21,"10000");	
+		 Employee e3 = new Employee("Kevin","Dorado",21,"10000");
+		 
+		 e1.setBoss(boss);
+		 e2.setBoss(boss);
+		 e3.setBoss(boss);
+	}
+	
+	@Test
+	public void employeeAndPayroll(){
+		Payroll p = new Payroll("10000.00", new BigDecimal("0.5"));
+		Employee e = new Employee("Cathy","Belen",21,"10000.00");
+		e.setPayroll(p);
+		
+		EmployeeDAO dao = new EmployeeDAO();
+		dao.persist(e);
+		
+		int i = e.getId();
+		
+		Employee retrieved = dao.find(i);
+		assertNotNull(retrieved);
+		assertEquals(e.getFirstName(), "Cathy");
+		assertEquals(e.getPayroll().getBonus(), p.getBonus());
+		
+	}
+	@Test
+	public void payrollPersistence(){
+		PayrollDAO dao = new PayrollDAO();
+		Payroll e = new Payroll("10000.00", new BigDecimal("0.5"));
+	
+		dao.persist(e);
+		
+		int id = e.getId();
+		
+		Payroll retrieved = dao.find(id);
+		assertNotNull(retrieved);
+		assertEquals(retrieved.getSalary(),"10000.00");
+		assertEquals(retrieved.getBonus(), "5000.00");
+		assertEquals(retrieved.getAnnualIncome(), "125000.00");
+	}
+	@Test
+	public void departmentName(){
+		Employee e = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e1 = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e2 = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e3 = new Employee("Cathy","Belen",21,"10000.00");
+		
+		e.setDepartment("Information Technology");
+		e1.setDepartment("Infrastructure");
+		e2.setDepartment("Sales");
+		e3.setDepartment("E-Commerce");
+		
+		EmployeeDAO dao = new EmployeeDAO();
+		dao.persist(e);
+		dao.persist(e1);
+		dao.persist(e2);
+		dao.persist(e3);
+		
+		List<Employee> departmentCount = dao.findByDepartment("In");
+		assertEquals(departmentCount.size(),2);
+		
+		departmentCount =  dao.findByDepartment("Info");
+		assertEquals(departmentCount.size(),1);
+		
+		departmentCount =  dao.findByDepartment("a");
+		assertEquals(departmentCount.size(),3);
+		
+	}
+	
+	@Test
+	public void employeeScore() {
+		Employee e = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e1 = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e2 = new Employee("Cathy","Belen",21,"10000.00");
+		Employee e3 = new Employee("Cathy","Belen",21,"10000.00");
+		
+		e.setScore(100);
+		e1.setScore(90);
+		e2.setScore(80);
+		e3.setScore(70);
+		
+		EmployeeDAO dao = new EmployeeDAO();
+		dao.persist(e);
+		dao.persist(e1);
+		dao.persist(e2);
+		dao.persist(e3);
+		
+		List<Employee> above80 = dao.findByScoreRange(81,100);
+		assertEquals(above80.size(),2);
+	}
+	
+	@Test
+	public void employeePersistence() throws PresidentException {
+		EmployeeDAO dao = new EmployeeDAO();
+		Employee e = new Employee("Cathy","Belen",21,"10000.00");
+		e.setDepartment("IT");
+		dao.persist(e);
+		
+		int id = e.getId();
+		
+		Employee retrieved = dao.find(id);
+		assertNotNull(retrieved);
+		assertEquals(retrieved.getDepartment(),"IT");
+		
+		
+		Employee e2 = new Employee("Kelvin","Te",21,"10000.00");
+		e2.setDepartment("SALES");
+		dao.persist(e2);
+		
+		retrieved = dao.find(e2.getId());
+		assertNotNull(retrieved);
+		assertEquals(retrieved.getDepartment(),"SALES");
+	}
+
+}

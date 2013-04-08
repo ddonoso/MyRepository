@@ -1,0 +1,61 @@
+package com.pcm.training;
+
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+public class PayRollDAO {
+	
+	private EntityManager pr;
+
+    static {
+        try {
+            DriverManager.registerDriver((Driver) Class.forName("org.hsqldb.jdbcDriver").newInstance());
+        } catch (Exception e) {
+            System.out.println("Crazy exception: " + e.getMessage());
+            System.exit(-1);
+        }
+    }
+
+    public PayRollDAO() {
+		// TODO Auto-generated constructor stub
+    	pr = Persistence.createEntityManagerFactory("pu").createEntityManager();
+	}
+	
+	public void persist(PayRoll pr) {
+		pr.getTransaction().begin();
+		pr.persist(e);
+		pr.flush();
+		pr.getTransaction().commit();
+		
+	}
+
+	public Employee find(int id) {
+		// TODO Auto-generated method stub
+		return em.find(Employee.class,id);
+	}
+
+	public List<Employee> findByScoreRange(int start, int end) {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT e FROM Employee e WHERE score >= :start AND score <= :stop",Employee.class)
+                .setParameter("start",start)
+                .setParameter("stop",end)
+                .getResultList();
+	}
+	
+	public List<Employee> searchByDepartment(String substring) {
+        //substring = "%"+substring+"%";
+        
+        return em.createQuery("SELECT e FROM Employee e WHERE department LIKE :a",Employee.class)
+                     .setParameter("a", "%"+substring+"%").
+                     getResultList();
+        
+ }
+
+	
+	
+
+}

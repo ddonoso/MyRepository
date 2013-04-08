@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JPATest" project="Project" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.pcm.test.JPATest" time="1.913">
+    <testcase name="employeeScore" classname="com.pcm.test.JPATest" time="1.902"/>
+    <testcase name="factoryTest" classname="com.pcm.test.JPATest" time="0.002"/>
+    <testcase name="DepartmentTest" classname="com.pcm.test.JPATest" time="0.009"/>
+  </testsuite>
+</testrun>

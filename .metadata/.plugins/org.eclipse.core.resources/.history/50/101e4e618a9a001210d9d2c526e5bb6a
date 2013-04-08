@@ -1,0 +1,10 @@
+package com.pcm.training;
+
+public class UserTest {
+	
+	int arr[5] = {1,2,3,4,5};
+	int arr[] = {1,2,3,4,5};
+	int arr[5];
+	int arr[] = arr[5];
+
+}

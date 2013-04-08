@@ -1,0 +1,208 @@
+package com.pcm.test;
+
+import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import com.pcm.entity.Employee;
+import com.pcm.entity.PayRoll;
+import com.pcm.entity.Person;
+import com.pcm.entity.President;
+import com.pcm.service.PayroleService;
+import com.pcm.training.PresidentException;
+import com.pcm.training.SalaryInLimitException;
+import com.pcm.training.SubordinateInLimitException;
+
+public class BonusTest {
+	
+	public final String FIRST_NAME = "Ezekiel";
+	public final String LAST_NAME = "Calayag";
+	public final int AGE = 22;
+	public final String SALARY = "5";
+
+	@Test
+	public void basicPersonCreationTests() throws PresidentException {
+		
+		Employee e = new Employee(FIRST_NAME, LAST_NAME, AGE, SALARY);	
+		Assert.assertEquals(e.getFirstName(),"Ezekiel");
+		Assert.assertEquals(e.getLastName(), "Calayag");
+		Assert.assertEquals(e.getAge(), 22);
+		Assert.assertEquals(e.getSalary(), "5");
+		PayRoll pay = e.getPayroll();
+		Assert.assertEquals(pay.getSalaryWithBonusAnnual(), "72.0");
+		
+		President p = new President(FIRST_NAME, LAST_NAME, AGE, SALARY);	
+		Assert.assertEquals(p.getFirstName(),"Ezekiel");
+		Assert.assertEquals(p.getLastName(), "Calayag");
+		Assert.assertEquals(p.getAge(), 22);
+		Assert.assertEquals(p.getSalary(), "5");
+		PayRoll pay2 = p.getPayroll();
+		Assert.assertEquals(pay2.getSalaryWithBonusAnnual(), "90.0");
+		
+			
+	}
+	@Test
+	
+	public void leavingBonusTest() throws PresidentException{
+		
+		Employee pres = new President(FIRST_NAME, LAST_NAME, AGE, SALARY);
+		pres.fire();		
+		Assert.assertEquals(pres.getGoldenParachuteBonus(), "10000"); 
+		
+		Employee e = new Employee(FIRST_NAME, LAST_NAME, AGE, SALARY);
+		e.fire();
+		Assert.assertEquals(e.getGoldenParachuteBonus(), null);
+		
+	
+		
+	}	
+	
+	@Test
+    public void collectionCompareTest() throws PresidentException {
+           Person p = new President("Kelvin", "Te", 21, "100000");
+           Person p1 = new President("Cathy","Belen", 21, "100000");
+           Person p2 = new President("Kevin", "Dorado", 21, "100000");
+           Person p3 = new President("Kel", "Calayang", 21, "100000");
+           
+           SortedSet<Person> s = new TreeSet<Person>(new Comparator<Person>() {
+
+                  @Override
+                  public int compare(Person o1, Person o2) {
+                        // TODO Auto-generated method stub
+                        return o1.getLastName().compareTo(o2.getLastName());
+                  }
+           });
+           s.add(p1);
+           s.add(p2);
+           s.add(p3);
+           s.add(p);
+           
+           List<Person> list = new ArrayList<Person>(s);
+           assertEquals(list.get(0).getLastName(),"Belen");
+
+           assertEquals(list.get(1).getLastName(),"Calayang");
+
+           assertEquals(list.get(2).getLastName(),"Dorado");
+
+           assertEquals(list.get(3).getLastName(),"Te");
+	}
+
+	@Test
+	
+	public void subordinates() throws PresidentException, SubordinateInLimitException, SalaryInLimitException{
+		
+		President president = new President(FIRST_NAME, LAST_NAME, AGE, SALARY);
+		
+		Employee e1 = new Employee("e","Calayag", 22, "0");
+		Employee e2 = new Employee("z","",23,"0");
+		Employee e3 = new Employee("ek","Calayag", 22, "0");
+		Employee e4 = new Employee("il","",23,"0");
+		Employee e5 = new Employee("r","Calayag", 22, "0");
+		Employee e6 = new Employee("ca","",23,"10");
+		Employee e7 = new Employee("la","Calayag", 22, "0");
+		Employee e8 = new Employee("ya","",23,"0");
+		Employee e9 = new Employee("g","Calayag", 22, "0");
+		Employee e10 = new Employee("xx","",23,"0");
+		Employee e11 = new Employee("ss","Calayag", 22, "0");
+		
+		
+		try{
+			president.addSubordinate(e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11);
+		}catch(SubordinateInLimitException e){
+			assertEquals("", e.getMessage(), "Number of subordinate already in limit");
+		}
+			
+			
+			
+		
+			President president1 = new President(FIRST_NAME, LAST_NAME, AGE, SALARY);
+			
+	
+			Employee em1 = new Employee("la","Calayag", 22, "5");
+			Employee em2 = new Employee("ya","",23,"3");
+			Employee em3 = new Employee("g","Calayag", 22, "5");
+			Employee em4 = new Employee("xx","",23,"3");
+			Employee em5 = new Employee("ss","Calayag", 22, "5");
+				
+			try{
+				president1.addSubordinate(em1,em2,em3,em4,em5);
+			}catch(SalaryInLimitException e){
+				assertEquals("", e.getMessage(), "Salary in Limit");
+			}
+	}
+
+	@Test
+	
+	public void AgeTest() throws PresidentException{
+		
+		President pres = new President("kiel", "calayag", 1, "10");
+
+		try{
+			pres.checkAge();
+		}catch(PresidentException e){
+			assertEquals("message not match" ,e.getMessage(),"To young to be the president!");
+		}
+	}
+	
+	@Test
+	public void pensionFund() throws PresidentException{
+		PayroleService ps =  PayroleService.getInstance();
+		President e = new President("Ezekiel","Calayag",22,"50000");
+		e.getPayroll().setYearsOfService(10);
+		assertEquals(ps.getPension(e), "353692.22"); 
+		assertEquals(e.getGoldenParachuteBonus(),"10000");
+		
+		PayroleService payrol =  PayroleService.getInstance();
+		Employee emp = new Employee("kiel","Calayag",22,"5000");
+		emp.getPayroll().setYearsOfService(10);
+		assertEquals(payrol.getPension(emp), "35369.22"); 
+		assertEquals(emp.getGoldenParachuteBonus(),null);
+	
+	}		
+	@Test
+	public void ServiceTest() throws PresidentException{
+		
+		Employee e = new Employee(FIRST_NAME, LAST_NAME, AGE, SALARY);	
+		Assert.assertEquals(e.getFirstName(),"Ezekiel");
+		Assert.assertEquals(e.getLastName(), "Calayag");
+		Assert.assertEquals(e.getAge(), 22);
+		Assert.assertEquals(e.getSalary(), "5");
+		PayRoll pay = e.getPayroll();
+		Assert.assertEquals(pay.getSalaryWithBonusAnnual(), "72.0");
+		
+		President p = new President(FIRST_NAME, LAST_NAME, AGE, SALARY);	
+		Assert.assertEquals(p.getFirstName(),"Ezekiel");
+		Assert.assertEquals(p.getLastName(), "Calayag");
+		Assert.assertEquals(p.getAge(), 22);
+		Assert.assertEquals(p.getSalary(), "5");
+		PayRoll pay2 = p.getPayroll();
+		Assert.assertEquals(pay2.getSalaryWithBonusAnnual(), "90.0");		
+		
+	}		
+	
+	@Test
+	
+	public void PayRollTest(){
+		
+		PayRoll payroll = new PayRoll(new BigDecimal("100"),new BigDecimal("0.20"));
+		
+		assertEquals(payroll.getSalaryWithBonusAnnual(),"1440.00");
+		
+		
+	}
+}
+
+
+
+

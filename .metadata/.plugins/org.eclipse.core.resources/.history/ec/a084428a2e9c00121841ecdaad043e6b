@@ -1,0 +1,50 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+
+
+public class PayroleService extends Employee{
+
+	private static PayroleService instance;
+	Employee employee;
+	final int NUMBER_OF_MONTHS = 12;
+	
+	private PayroleService(String firstName, String lastName, int age,
+			String salary) {
+		super(firstName, lastName, age, salary);	
+		
+	}
+	
+
+	
+	public BigDecimal getPension(Employee employee){
+		BigDecimal totalPension = new BigDecimal(0) ;
+		float PensionYearlyPercentage = 1.1f;
+		BigDecimal Salary = new BigDecimal(employee.getSalary());
+		if(employee.getYearofService() >= 2){
+			for(int year = 2; employee.getYearofService() >= year; year++){
+				
+				Salary = Salary.multiply(BigDecimal.valueOf(PensionYearlyPercentage));
+				
+				totalPension = ((Salary.multiply(BigDecimal.valueOf(NUMBER_OF_MONTHS))).multiply(BigDecimal.valueOf(.25)));
+				
+
+			}
+		}else{
+			
+			totalPension = ((Salary.multiply(BigDecimal.valueOf(NUMBER_OF_MONTHS))).multiply(BigDecimal.valueOf(.25)));
+		}
+		
+		
+		return totalPension;
+	}
+	
+	public static PayroleService getInstance() {
+		if(instance==null){
+			instance = new PayroleService();
+		}
+		return instance;
+	}
+	
+	
+}

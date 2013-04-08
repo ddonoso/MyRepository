@@ -1,0 +1,28 @@
+package com.pcm.factory;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class PersonFactory<A instanceof Employee>{
+                
+                private static PersonFactory instance;
+                @SuppressWarnings({ "unchecked", "rawtypes" })
+                public static PersonFactory getInstance() {
+                                if (instance == null) {
+                                                instance = new PersonFactory<>();
+                                }
+                                return instance;
+                }
+
+                public A createInstance(String name, String last, int age, String salary, Class<A> theClass)
+                                                   throws IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+                                Constructor<A> constructor = theClass.getDeclaredConstructor(String.class,String.class, int.class,String.class);
+                                return constructor.newInstance(name,last,age,salary);
+                }
+  
+
+
+
+}
+			
+

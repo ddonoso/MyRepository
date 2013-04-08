@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StudentTest" project="ProjectTest" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.pcm.test.StudentTest" time="2.747">
+    <testcase name="employeeScore" classname="com.pcm.test.StudentTest" time="2.747"/>
+  </testsuite>
+</testrun>

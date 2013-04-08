@@ -1,0 +1,8 @@
+package com.pcm.training;
+
+public class UserTest {
+	
+
+	int arr[] = [5];
+
+}

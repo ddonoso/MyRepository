@@ -1,0 +1,14 @@
+package com.pcm.training;
+
+public class test {
+ 
+	public static void main(String args[]){
+		
+		int number = 3;
+		float pera = 0.1f;
+		for(int year = 1; number > year; year++){
+			
+		}
+	}
+
+}

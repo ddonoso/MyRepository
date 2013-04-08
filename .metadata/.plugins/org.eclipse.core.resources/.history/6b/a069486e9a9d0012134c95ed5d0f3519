@@ -1,0 +1,42 @@
+package com.pcm.training;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.pcm.training.PayroleService;
+import com.pcm.training.President;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/beans.xml"})
+public class JPAPayRollTest {
+
+	
+	@Autowired
+	private PayroleService ps;
+	
+	@Test
+	public void payRollTest(){
+		
+		President e = new President("Cathy","Belen",21,"10000");
+		e.setYearsOfService(10);
+		// 10000 * 1.1 * 1.1 * 12 * 0.25
+		ps.getPension(e);
+		assertEquals(ps.getPension(e);, "36300.00");	
+		
+		
+		
+	}
+	
+	
+	
+	
+}
+
+
+

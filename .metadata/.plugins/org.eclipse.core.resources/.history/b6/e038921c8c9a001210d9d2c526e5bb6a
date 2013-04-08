@@ -1,0 +1,15 @@
+package com.pcm.training;
+
+import java.util.ArrayList;
+
+public class UserTest {
+
+		public int i;
+		public static void main(String argv[]){
+			UserTest sc = new UserTest();
+		// Comment line
+		}
+		}
+		Which of the following statements
+	
+

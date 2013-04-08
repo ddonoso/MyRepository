@@ -1,0 +1,52 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+
+abstract class Person {
+	
+	private static final String DEFAULT_BONUS = "00.00";
+	
+	public String firstName;
+	public String lastName;
+	public int age;
+	public String salary;
+	BigDecimal Bonus;
+    String SalaryIncrease;
+
+	public Person(String firstName, String lastName, int age, String salary) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.salary = salary;
+	}
+	
+
+	public String getFirstName() {
+		
+		return this.firstName;
+	}
+
+	public String getLastName() {
+		
+		return this.lastName;
+	}
+
+	public String getSalary() {
+		
+		return this.salary;
+	}
+
+	public int getAge() {
+		
+		return this.age ;
+	}
+
+	public String getSalaryIncrease(){
+		return DEFAULT_BONUS;
+	}
+	public void setSalaryIncrease(){
+		this.SalaryIncrease = salary;
+	}
+	
+}
+

@@ -1,0 +1,5 @@
+package com.pcm.dao;
+
+public class DepartmentDAO {
+
+}

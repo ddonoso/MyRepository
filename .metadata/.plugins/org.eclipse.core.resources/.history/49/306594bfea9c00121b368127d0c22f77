@@ -1,0 +1,81 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+import java.util.Random;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table (name = "PayRoll")
+public class PayRoll {
+	@Id
+	@Column (name = "ID")
+	private int id;
+	
+	 private final int NUMBER_OF_MONTHS = 12;
+	 
+	 public static Random rnd = new Random(10000001);  
+	 	
+	 	@Column (name = "SALARY")
+		private BigDecimal salary;
+	 	
+	 	@Column (name = "ANNUALINCOME")
+	    private String salaryWithBonusAnnual;
+	 
+	 	@Transient
+	    private BigDecimal percentageBonus;
+	
+	
+	 	
+	 	
+	public PayRoll(BigDecimal salary, BigDecimal percentageBonus) {
+			super();
+			this.salary = salary;
+			this.percentageBonus = percentageBonus;
+		}
+	public void setSalaryWithBonusAnnual(String salaryWithBonusAnnual) {
+		this.salaryWithBonusAnnual = salaryWithBonusAnnual;
+	}
+	public BigDecimal getSalary() {
+		return salary;
+	}
+	
+	public String getSalaryWithBonusAnnual() {
+		
+		BigDecimal annualSalary = new BigDecimal(0);
+		
+		setSalary(salary);
+		
+		annualSalary = getSalary().multiply(BigDecimal.valueOf(NUMBER_OF_MONTHS));
+		
+		BigDecimal bonus = (annualSalary.multiply(getPercentageBonus()));
+		
+		BigDecimal p = bonus.add(annualSalary);
+		
+		this.salaryWithBonusAnnual = p.toString();
+	
+		return salaryWithBonusAnnual;
+
+	}
+
+
+	public BigDecimal getPercentageBonus() {
+		return percentageBonus;
+	}
+	
+	
+	public void setPercentageBonus(BigDecimal percentageBonus) {
+		this.percentageBonus = percentageBonus;
+	}
+	public void setSalary(BigDecimal salary) {
+		this.salary = salary;	
+			
+	}
+	
+		 	 
+	 
+}

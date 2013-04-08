@@ -1,0 +1,72 @@
+package com.pcm.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.pcm.dao.EmployeeDAO;
+import com.pcm.entity.Employee;
+import com.pcm.service.PayroleService;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/beans.xml"})
+public class ComputeSalaryTest {
+
+	@Autowired
+	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	private PayroleService payrollService;
+	
+	@Test
+	public void findByNameTest() {
+		Employee emp1 = new Employee("Ezekiel","Calayag",22, "5500");
+		emp1.getPayroll().setYearsOfService(1);
+		employeeDAO.persist(emp1);
+		Employee emp2 = new Employee("Ezekiel","Ca",22, "5500");
+		emp2.getPayroll().setYearsOfService(2);
+		employeeDAO.persist(emp2);
+		Employee emp3 = new Employee("Kiel","Calayag",22, "5500");
+		emp3.getPayroll().setYearsOfService(3);
+		employeeDAO.persist(emp3);
+		Employee emp4 = new Employee("Kellogs","Calayag",22, "5500");
+		emp4.getPayroll().setYearsOfService(4);
+		employeeDAO.persist(emp4);
+		Employee emp5 = new Employee("Kellog","Calayag",22, "5500");
+		emp5.getPayroll().setYearsOfService(5);
+		employeeDAO.persist(emp5);
+
+		
+		
+		Employee resultEmployee = payrollService.findByName("Ezekiel", "Calayag");
+		
+		assertNotNull("result Employee must not be null", resultEmployee);
+		
+		assertEquals(payrollService.getPension(resultEmployee),"16500.00");
+		
+		
+		Employee resultEmployee2 = payrollService.findByName("Ezekiel", "Ca");
+		
+		assertNotNull("result Employee must not be null", resultEmployee2);
+		
+		assertEquals(payrollService.getPension(resultEmployee2),"18150.00");
+		
+		
+		
+		Employee resultEmployee3 = payrollService.findByName("Kiel", "Calayag");
+		
+		assertNotNull("result Employee must not be null", resultEmployee3);
+		
+		assertEquals(payrollService.getPension(resultEmployee3),"19965.00");
+		
+		
+		
+	
+	}
+
+}

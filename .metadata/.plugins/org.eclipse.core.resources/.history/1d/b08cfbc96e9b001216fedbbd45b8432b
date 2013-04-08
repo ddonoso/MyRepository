@@ -1,0 +1,9 @@
+package com.pcm.training;
+
+public class PresidentException extends Exception {
+
+	public PresidentException(String message) {
+		super(message);
+	}
+
+}

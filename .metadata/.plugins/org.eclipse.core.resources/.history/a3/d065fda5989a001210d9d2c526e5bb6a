@@ -1,0 +1,18 @@
+package com.pcm.training;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+public class PersonTest {
+
+	@Test
+	public void basicPersonCreationTests() {
+		Person p = new Person("Kelvin", "Te", 22, "100000");
+		Assert.assertEquals(p.getFirstName(),"Kelvin");
+		Assert.assertEquals(p.getLastName(), "Te");
+		Assert.assertEquals(p.getAge(), 22);
+		Assert.assertEquals(p.getSalary(), "100000");
+	}
+
+}

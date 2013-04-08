@@ -1,0 +1,140 @@
+package com.pcm.training;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/beans.xml"})*/
+
+public class JPATest {
+	@Autowired
+	private EmployeeDAO dao;
+	
+	@Test
+	public void employeeScore() {
+		Employee e = new Employee("ss","Calayag", 22, "5");
+		Employee e1 = new Employee("ss","Calayag", 22, "5");
+		Employee e2 = new Employee("ss","Calayag", 22, "5");
+		Employee e3= new Employee("ss","Calayag", 22, "5");
+		
+		e.setScore(100);
+		e1.setScore(90);
+		e2.setScore(80);
+		e3.setScore(70);
+			
+		dao.persist(e);
+		dao.persist(e1);
+		dao.persist(e2);
+		dao.persist(e3);
+		
+		List<Employee> above80 = dao.findByScoreRange(81,100);
+		assertEquals(above80.size(),2);
+	}
+	
+	@Test
+	public void test() throws PresidentException {
+		dao = new EmployeeDAO();
+		Employee e = new Employee("ss","Calayag", 22, "5");
+		e.setDepartment("IT");
+		dao.persist(e);
+		
+		int id = e.getId();
+		
+		Employee retrieved = dao.find(id);
+		assertNotNull(retrieved);
+		assertEquals(retrieved.getDepartment(),"IT");
+		
+		
+		Employee e2 = new Employee("ss","Calayag", 22, "5");
+		e2.setDepartment("SALES");
+		dao.persist(e2);
+		
+		retrieved = dao.find(e2.getId());
+		assertNotNull(retrieved);
+		assertEquals(retrieved.getDepartment(),"SALES");
+	}
+	
+	@Test
+	public void employeeDepartment() {
+		Employee e = new Employee("ss","Calayag", 22, "5");
+		Employee e1 = new Employee("ss","Calayag", 22, "5");
+		Employee e2 = new Employee("ss","Calayag", 22, "5");
+		Employee e3= new Employee("ss","Calayag", 22, "5");
+		
+		e.setDepartment("INFORMATION TECHNOLOGY");
+		e1.setDepartment("ACCOUNTING");
+		e2.setDepartment("MARKETING");
+		e3.setDepartment("SALES");
+		
+		EmployeeDAO dao = new EmployeeDAO();
+			
+		dao.persist(e);
+		dao.persist(e1);
+		dao.persist(e2);
+		dao.persist(e3);
+		
+		List<Employee> dept = dao.searchByDepartment("IN");
+		assertEquals(dept.size(),3);
+	}
+	
+	public void payRoll() {
+		Employee e = new Employee("ss","Calayag", 22, "5");
+		Employee e1 = new Employee("ss","Calayag", 22, "5");
+		Employee e2 = new Employee("ss","Calayag", 22, "5");
+		Employee e3= new Employee("ss","Calayag", 22, "5");
+		
+		e.setDepartment("INFORMATION TECHNOLOGY");
+		e1.setDepartment("ACCOUNTING");
+		e2.setDepartment("MARKETING");
+		e3.setDepartment("SALES");
+		
+		EmployeeDAO dao = new EmployeeDAO();
+			
+		dao.persist(e);
+		dao.persist(e1);
+		dao.persist(e2);
+		dao.persist(e3);
+		
+		List<Employee> dept = dao.searchByDepartment("IN");
+		assertEquals(dept.size(),3);
+	}
+	
+	public void BossEmployeeRelationshipTest(){
+		
+		Employee boss = new Employee("boss","boss", 22, "5");
+		Employee e1 = new Employee("ss","Calayag", 22, "5");
+		Employee e2 = new Employee("ss","Calayag", 22, "5");
+		Employee e3= new Employee("ss","Calayag", 22, "5");
+		
+		EmployeeDAO edao = new EmployeeDAO();
+		
+		
+	}
+	@Test
+	public void payrollTest() throws PresidentException {
+
+		EmployeeDAO edao = new EmployeeDAO();
+		Employee e = new Employee("Cathy","Belen",21,"10000.00");
+		e.getPayroll().setSalary("100500");
+		edao.persist(e);
+		
+		Employee loaded = edao.find(e.getId());
+		Payroll p1 = loaded.getPayroll();
+		assertNotNull(p1);
+		assertEquals(p1.getSalary(), "100500");
+//		assertEquals(p1.getId(),p.getId());
+		
+		
+	}
+
+}
+

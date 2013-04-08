@@ -1,0 +1,217 @@
+package com.pcm.entity;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.pcm.enums.EmploymentStatus;
+
+@Entity
+@Table (name = "EMPLOYEE")
+@SequenceGenerator(name = "employee_seq", initialValue = 1, allocationSize = 1000)
+public class Employee extends Person{
+	@Transient
+	private final int months = 12;
+	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "employee")
+	private List<PayRoll> payroll = new ArrayList<PayRoll>();
+	
+	@ManyToOne
+	@JoinColumn(name="BOSS_ID")
+	private Employee boss;
+   	
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+	private int id;
+	
+	@ManyToOne (cascade = CascadeType.ALL, mappedBy = "employee")
+ 	@Column (name = "DEPARTMENT")   //persistence
+	private String department;
+ 	
+  	
+    @Column (name = "SCORE")   //persistence
+   	private int score;
+    
+ 	@ManyToOne
+ 	@JoinColumn(name = "EMPLOYEE_ID")
+ 	private Employee employee;
+
+    
+   
+    
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="boss")
+	Set<Employee> subordinates = new HashSet<Employee>();
+	
+ 	@Transient
+	private final BigDecimal PERCENTAGEBONUS = BigDecimal.valueOf(0.20);
+
+ 	@Transient
+ 	private String salary;
+ 	@Transient
+ 	private BigDecimal annualSalary;
+ 	@Transient
+ 	private EmploymentStatus employmentStatus;
+ 	@Transient
+ 	private String goldenParachuteBonus;
+
+ 	
+
+    
+    //boss year payroll
+	
+	public Employee(String firstName, String lastName, int age, String salary) {
+		super(firstName, lastName, age);
+		
+/*		PayRoll payroll = new PayRoll();
+		payroll.setSalary(new BigDecimal(salary));
+*/
+		setPayroll(new PayRoll(new BigDecimal(salary), PERCENTAGEBONUS));
+		//payroll.setPercentageBonus(PERCENTAGEBONUS);
+
+		//this.payroll.add(payroll);
+		
+		this.salary = salary;
+		
+	}	
+	
+
+	public BigDecimal getPercentBonus(){
+		return this.PERCENTAGEBONUS;
+	}
+		
+	public void fire(){                                                    // Employment Status
+	 setStatus(EmploymentStatus.FIRED);
+	}
+	
+	public void hire(){
+		
+		setStatus(EmploymentStatus.HIRED);
+	}
+	
+
+	protected void setStatus(EmploymentStatus employmentStatus){
+		this.employmentStatus = employmentStatus;
+	}
+
+	public Employee getBoss() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+		
+	}
+	
+	public String getSalary(){
+		return this.salary;
+	
+	}
+	
+	public BigDecimal getAnnualSalary(){
+		
+		annualSalary = new BigDecimal(salary).multiply(BigDecimal.valueOf(12));
+	
+		return annualSalary;
+		
+	}
+	
+	public String getsNothing(){
+		return "00.00";
+	}
+
+	public String getGoldenParachuteBonus() {
+		
+		return goldenParachuteBonus;
+	}
+
+	public void setGoldenParachuteBonus(String amount) {
+		
+		goldenParachuteBonus = amount;
+	}
+		
+
+	@Override
+	public void getPerson() {
+		
+		
+	}
+	
+	public PayRoll getPayroll() {
+		return this.payroll.isEmpty() ? null : payroll.get(0);
+	}
+	
+	public void setPayroll(PayRoll payroll) {
+		this.payroll.clear();
+		this.payroll.add(payroll);
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+		
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+}
+

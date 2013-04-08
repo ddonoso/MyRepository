@@ -1,0 +1,17 @@
+package com.pcm.training;
+
+import java.math.BigDecimal;
+
+public class EmployeeEntity extends Person{
+	
+
+	private String salary;
+
+
+	}
+
+
+	
+}
+
+
